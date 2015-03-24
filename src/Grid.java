@@ -11,34 +11,40 @@ public class Grid {
 		return grid;
 	}
 	
-	public int shoot(int x, char y) {
-		if ()
-		
-		
-		return 1;
+	public int shoot(int x, char c) {
+		int y = intToChar(c);
+		if (!inBounds(x, intToChar(c))) {
+			return 0;
+		}
+		if (grid[x][y] < 2) {
+			grid[x][y] =+ 2;
+			return grid[x][y];
+		} else {
+			return 0;
+		}
 	}
 	
-	public int charToInt(char y) {
+	public int charToInt(char c) {
 		String all = "abcdefghijklmnopqrstuvwxyz";
-		int index = -1;
+		int y = -1;
 		for (int i = 0; i < all.length(); i++) {
-			if (y == all.charAt(i)) {
-				index = i+1;
+			if (c == all.charAt(i)) {
+				y = i;
 			}
 		}
-		return index;
+		return y;
 	}
 	public char intToChar(int y) {
 		String all = "abcdefghijklmnopqrstuvwxyz";
 		char c = 0;
-		if (y > 0 && y <= all.length()) {
-			c = all.charAt(y-1);
+		if (y >= 0 && y < all.length()) {
+			c = all.charAt(y);
 		}
 		return c;
 	}
 	
 	public boolean inBounds(int x, int y) {
-		if (x <= grid[0].length && x > 0 && y <= grid.length && y > 0) {
+		if (x < grid[0].length && x >= 0 && y < grid.length && y >= 0) {
 			return true;
 		}
 		return false;
