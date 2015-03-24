@@ -4,3 +4,4 @@ Turn data:
   1 - boat
   2 - miss
   3 - hit
+  4 - error
