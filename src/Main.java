@@ -6,7 +6,7 @@ public class Main {
 
 	}
 	
-	public void battleship {
+	public void battleship() {
 		
 	}
 
