@@ -15,6 +15,7 @@ public class Main {
 		}
 		return y;
 	}
+	
 	public char intToChar(int y) {
 		String all = "abcdefghijklmnopqrstuvwxyz";
 		char c = 0;

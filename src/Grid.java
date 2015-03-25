@@ -11,6 +11,10 @@ public class Grid {
 		return grid;
 	}
 	
+	public void makeBoat(Boat b) {
+		//TODO
+	}
+	
 	public int shoot(int x, int y) {
 		if (!inBounds(x, y)) {
 			return 0;
