@@ -25,7 +25,7 @@ public class Grid {
 		}
 	}
 	
-	public int shoot(int x, int y) {
+	public int shot(int x, int y) {
 		if (!inBounds(x, y)) {
 			return 0;
 		}

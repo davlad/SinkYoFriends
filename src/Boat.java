@@ -1,7 +1,7 @@
 
 public class Boat {
 
-	private int size;
+	private int size = 0;
 	private int xPos;
 	private int yPos;
 	private int dir;
