@@ -3,8 +3,13 @@ public class Grid {
 	
 	private int[][] grid;
 	
-	public Grid(int x, int y) {
-		grid = new int[x][y];
+	public Grid(int w, int h) {
+		grid = new int[w][h];
+		for (int[] rowArray : grid) {
+	    	for (int point : rowArray) {
+	    		point = 0;
+	    	}
+		}
 	}
 	
 	public int[][] getGrid() {
@@ -14,7 +19,9 @@ public class Grid {
 	public void makeBoat(Boat b) {
 		int[][] coords = b.getCoords();
 		for (int i = 0; i < b.getCoords()[0].length; i++) {
-			grid[ coords[0][i] ] [ coords[1][i] ] = 1;
+			int x = coords[0][i];
+			int y = coords[1][i];
+			grid[x][y] = 1;
 		}
 	}
 	
