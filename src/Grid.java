@@ -5,10 +5,10 @@ public class Grid {
 	
 	public Grid(int w, int h) {
 		grid = new int[w][h];
-		for (int[] rowArray : grid) {
-	    	for (int point : rowArray) {
-	    		point = 0;
-	    	}
+		for (int x = 0; x < grid[0].length; x++) {
+			for (int y = 0; y < grid.length; y++) {
+				grid[x][y] = 0;
+			}
 		}
 	}
 	
