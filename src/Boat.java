@@ -1,44 +1,46 @@
 
 public class Boat {
 
-	private int length;
+	private int size;
 	private int xPos;
 	private int yPos;
 	private int dir;
+	private Grid grid;
+	private int[][] coords;
 	
 	public Boat(int l, int x, int y, int d, Grid g) {
-		if (checkParams(l, x, y, d, g)) {
-			length = l;
+		grid = g;
+		if (checkParams(l, x, y, d)) {
+			size = l;
 			xPos = x;
 			yPos = y;
 			dir = d;
 		}
 	}
 	
-	private boolean checkParams(int l, int x, int y, int d, Grid g) {
+	private boolean checkParams(int l, int x, int y, int d) {
 		if (l < 2 || l > 5) {
 			System.out.println("Can't create boat: illegal length");
 			return false;
-		} else if (!g.inBounds(x, y)) {
+		} else if (!grid.inBounds(x, y)) {
 			System.out.println("Can't create boat: invalid location");
 			return false;
-		} else if (!goodDir(l, x, y, d, g)) {
+		} else if (!goodDir(l, x, y, d)) {
 			System.out.println("Can't create boat: bad direction");
 			return false;
-		} else if() {
+		} else if(overBoat(l, x, y, d)) {
 			System.out.println("Can't create boat: overlaps other boat(s)");
-		} else {
-			return true;
 		}
+		return true;
 	}
 	
-	private boolean goodDir(int l, int x, int y, int d, Grid g) {
+	private boolean goodDir(int l, int x, int y, int d) {
 		if (d == 1) {
 			return y-l+1 >= 0; 
 		} else if (d == 2) {
-			return x+l-1 < g.getGrid()[0].length; 
+			return x+l-1 < grid.getGrid()[0].length; 
 		} else if (d == 3) {
-			return y+l-1 < g.getGrid().length;
+			return y+l-1 < grid.getGrid().length;
 		} else if (d == 4) {
 			return x-l+1 >= 0;
 		} else {
@@ -46,13 +48,74 @@ public class Boat {
 		}
 	}
 	
-	private boolean overBoat() {
-		
+	private void makeCoords(int l, int x, int y, int d) {
+		if (d == 1) {
+			for (int i = 0; i < l; i++) {
+				coords[0][i] = x;
+				coords[1][i] = y+i;
+			}
+		} else if (d == 2) {
+			for (int i = 0; i < l; i++) {
+				coords[0][i] = x+i;
+				coords[1][i] = y;
+			}
+		} else if (d == 3) {
+			for (int i = 0; i < l; i++) {
+				coords[0][i] = x;
+				coords[1][i] = y-i;
+			}
+		} else if (d == 4) {
+			for (int i = 0; i < l; i++) {
+				coords[0][i] = x-i;
+				coords[1][i] = y;
+			}
+		}
 	}
 	
+	private boolean overBoat(int l, int x, int y, int d) {
+		int[][] temp = new int[2][l];
+		if (d == 1) {
+			for (int i = 0; i < l; i++) {
+				temp[0][i] = x;
+				temp[1][i] = y+i;
+			}
+		} else if (d == 2) {
+			for (int i = 0; i < l; i++) {
+				temp[0][i] = x+i;
+				temp[1][i] = y;
+			}
+		} else if (d == 3) {
+			for (int i = 0; i < l; i++) {
+				temp[0][i] = x;
+				temp[1][i] = y-i;
+			}
+		} else if (d == 4) {
+			for (int i = 0; i < l; i++) {
+				temp[0][i] = x-i;
+				temp[1][i] = y;
+			}
+		}
+		if (this.compareCoords(temp)) {
+			return true;
+		}
+		return false;
+	}
 	
-	public int getLength() {
-		return length;
+	private boolean compareCoords(int[][] b) {
+		for (int i = 0; i < b.length; i++) {
+			if (grid.getGrid()[ b[0][i] ] [ b[1][i] ] == 1) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int[][] getCoords() {
+		return coords;
+	}
+	
+	public int getSize() {
+		return size;
 	}
 	
 	public int getXPos() {
