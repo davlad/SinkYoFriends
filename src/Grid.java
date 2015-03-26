@@ -12,7 +12,10 @@ public class Grid {
 	}
 	
 	public void makeBoat(Boat b) {
-		//TODO
+		int[][] coords = b.getCoords();
+		for (int i = 0; i < b.getCoords()[0].length; i++) {
+			grid[ coords[0][i] ] [ coords[1][i] ] = 1;
+		}
 	}
 	
 	public int shoot(int x, int y) {

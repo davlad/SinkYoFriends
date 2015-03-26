@@ -15,6 +15,7 @@ public class Boat {
 			xPos = x;
 			yPos = y;
 			dir = d;
+			makeCoords(l, x, y, d);
 		}
 	}
 	
