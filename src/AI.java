@@ -17,9 +17,9 @@ public class AI {
 	}
 
 	private void shootRandom() {
-		int x = randInt(0, user.getGrid().getGrid()[0].length);
-		int y = randInt(0, user.getGrid().getGrid().length);
-		if (user.getGrid().getGrid()[x][y] < 2) {
+		int x = randInt(0, user.getGridData()[0].length);
+		int y = randInt(0, user.getGridData().length);
+		if (user.getGridData()[x][y] < 2) {
 			shot[0] = x;
 			shot[1] = y;
 		} else {
@@ -29,9 +29,9 @@ public class AI {
 	
 	private boolean noHits() {
 		int hits = 0;
-		for (int x = 0; x < user.getGrid().getGrid().length; x++) {
-			for (int y = 0; y < user.getGrid().getGrid().length; y++) {
-				if (user.getGrid().getGrid()[x][y] > 1) {
+		for (int x = 0; x < user.getGridData().length; x++) {
+			for (int y = 0; y < user.getGridData().length; y++) {
+				if (user.getGridData()[x][y] > 1) {
 					hits++;
 				}
 			}

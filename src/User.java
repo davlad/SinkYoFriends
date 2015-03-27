@@ -1,16 +1,15 @@
 
 public class User {
 	
-	private Grid grid;
+	private Grid grid = new Grid(10, 10);
 	private Boat[] boats;
 	private int[] boatLength = new int[] {2, 3, 3, 4, 5};
 	
-	public User(Grid g) {
-		grid = g;
+	public User() {
 	}
 	
 	public boolean addBoat(int l, int x, int y, int d) {
-		Boat b = new Boat(l, x, y, d, grid);
+		Boat b = new Boat(l, x, y, d, this);
 		if (b.getSize() == 0 || !canMake(b)) {
 			return false;
 		}
@@ -60,5 +59,9 @@ public class User {
 	
 	public Grid getGrid() {
 		return grid;
+	}
+	
+	public int[][] getGridData() {
+		return grid.gridData();
 	}
 }

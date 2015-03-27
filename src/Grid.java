@@ -12,7 +12,7 @@ public class Grid {
 		}
 	}
 	
-	public int[][] getGrid() {
+	public int[][] gridData() {
 		return grid;
 	}
 	

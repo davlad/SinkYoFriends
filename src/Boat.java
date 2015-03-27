@@ -5,17 +5,17 @@ public class Boat {
 	private int xPos;
 	private int yPos;
 	private int dir;
-	private Grid grid;
 	private int[][] coords;
 	private boolean destroyed = false;
+	private User user;
 	
-	public Boat(int l, int x, int y, int d, Grid g) {
-		grid = g;
+	public Boat(int l, int x, int y, int d, User u) {
 		if (checkParams(l, x, y, d)) {
 			size = l;
 			xPos = x;
 			yPos = y;
 			dir = d;
+			user = u;
 			makeCoords(l, x, y, d);
 		}
 	}
@@ -24,7 +24,7 @@ public class Boat {
 		if (l < 2 || l > 5) {
 			System.out.println("Can't create boat: illegal length");
 			return false;
-		} else if (!grid.inBounds(x, y)) {
+		} else if (!user.getGrid().inBounds(x, y)) {
 			System.out.println("Can't create boat: invalid location");
 			return false;
 		} else if (!goodDir(l, x, y, d)) {
@@ -40,9 +40,9 @@ public class Boat {
 		if (d == 1) {
 			return y-l+1 >= 0; 
 		} else if (d == 2) {
-			return x+l-1 < grid.getGrid()[0].length; 
+			return x+l-1 < user.getGridData()[0].length; 
 		} else if (d == 3) {
-			return y+l-1 < grid.getGrid().length;
+			return y+l-1 < user.getGridData().length;
 		} else if (d == 4) {
 			return x-l+1 >= 0;
 		} else {
@@ -117,7 +117,7 @@ public class Boat {
 	
 	private boolean compareCoords(int[][] b) {
 		for (int i = 0; i < b.length; i++) {
-			if (grid.getGrid()[ b[0][i] ] [ b[1][i] ] == 1) {
+			if (user.getGridData()[ b[0][i] ] [ b[1][i] ] == 1) {
 				return true;
 			}
 		}
@@ -139,7 +139,7 @@ public class Boat {
 			for (int i = 0; i < size; i++) {
 				coords[2][i] = 2;
 				destroyed = false;
-				grid.getGrid()[ coords[0][i] ] [ coords[1][i] ] = 4;
+				user.getGridData()[ coords[0][i] ] [ coords[1][i] ] = 4;
 			}
 		}
 		return destroyed;
