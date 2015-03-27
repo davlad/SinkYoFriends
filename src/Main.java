@@ -2,7 +2,8 @@
 public class Main {
 
 	public static void main(String[] args) {
-
+			TopUI tU = new TopUI();
+			BottomUI bU = new BottomUI();
 	}
 
 	public int charToInt(char c) {
