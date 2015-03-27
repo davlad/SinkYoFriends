@@ -54,21 +54,33 @@ public class Boat {
 			for (int i = 0; i < l; i++) {
 				coords[0][i] = x;
 				coords[1][i] = y+i;
+				coords[2][i] = 1;
 			}
 		} else if (d == 2) {
 			for (int i = 0; i < l; i++) {
 				coords[0][i] = x+i;
 				coords[1][i] = y;
+				coords[2][i] = 1;
 			}
 		} else if (d == 3) {
 			for (int i = 0; i < l; i++) {
 				coords[0][i] = x;
 				coords[1][i] = y-i;
+				coords[2][i] = 1;
 			}
 		} else if (d == 4) {
 			for (int i = 0; i < l; i++) {
 				coords[0][i] = x-i;
 				coords[1][i] = y;
+				coords[2][i] = 1;
+			}
+		}
+	}
+	
+	public void markHit(int x, int y) {
+		for (int i = 0; i < getSize(); i++) {
+			if (coords[0][i] == x && coords[1][i] == y) {
+				coords[2][i] = 0;
 			}
 		}
 	}
@@ -109,6 +121,16 @@ public class Boat {
 			}
 		}
 		return false;
+	}
+	
+	public double boatHealth() {
+		int h = 0;
+		for (int i = 0; i < size; i++) {
+			if (coords[2][i] == 1) {
+				h++;
+			}
+		}
+		return h/size;
 	}
 	
 	public int[][] getCoords() {
