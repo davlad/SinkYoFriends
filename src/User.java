@@ -47,7 +47,7 @@ public class User {
 		return shot;
 	}
 	
-	public Boat boatAt(int x, int y) {
+	private Boat boatAt(int x, int y) {
 		for (int i = 0; i < boats.length; i++) {
 			for (int l = 0; l < boats[i].getSize(); l++) {
 				if (boats[i].getCoords()[0][i] == x && boats[i].getCoords()[1][i] == y) {
