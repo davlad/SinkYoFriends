@@ -7,6 +7,7 @@ public class Boat {
 	private int dir;
 	private Grid grid;
 	private int[][] coords;
+	private boolean destroyed = false;
 	
 	public Boat(int l, int x, int y, int d, Grid g) {
 		grid = g;
@@ -124,13 +125,24 @@ public class Boat {
 	}
 	
 	public double boatHealth() {
-		int h = 0;
+		double h = 0;
 		for (int i = 0; i < size; i++) {
 			if (coords[2][i] == 1) {
 				h++;
 			}
 		}
 		return h/size;
+	}
+	
+	public boolean destroyed() {
+		if (boatHealth() == 0) {
+			for (int i = 0; i < size; i++) {
+				coords[2][i] = 2;
+				destroyed = false;
+				grid.getGrid()[ coords[0][i] ] [ coords[1][i] ] = 4;
+			}
+		}
+		return destroyed;
 	}
 	
 	public int[][] getCoords() {
