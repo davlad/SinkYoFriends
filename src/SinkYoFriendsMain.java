@@ -92,7 +92,7 @@ public class SinkYoFriendsMain {
         try{
         shoot[0] = input.nextInt();
         }catch(InputMismatchException e){
-    		System.out.println("Feeling naughty? Well, stick to integer values please.");
+    		System.out.println("Feeling naughty? Stick to integer values please.");
     	}
         shoot[0]--;
         
@@ -101,7 +101,7 @@ public class SinkYoFriendsMain {
         try{
         shoot[1] = input.nextInt();
     }catch(InputMismatchException e){
-		System.out.println("Feeling naughty? Well, stick to integer values please.");
+		System.out.println("Feeling naughty? Stick to integer values please.");
 	}
         shoot[1]--;
         
