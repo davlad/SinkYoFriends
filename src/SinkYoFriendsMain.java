@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class SinkYoFriendsMain {
         initBoard(board);
         initShips(ships);
         System.out.println("Come and Sink Yo' Friends!!! You are going first.");
-        System.out.println("Pick a row and a column between 1 and 5 to target an");
+        System.out.println("Pick a row and a column between 1 and 5 to target a");
         System.out.println("ship.");
         
         do{
@@ -35,6 +36,7 @@ public class SinkYoFriendsMain {
         
         System.out.println("\n\n\nYASSSSSSS! You have sunk yo' friends, matey! The game is finished! You hit 3 ships in "+attempts+" attempts");
         showBoard(board);
+    	
     }
     
     public static void initBoard(int[][] board){
@@ -87,11 +89,20 @@ public class SinkYoFriendsMain {
         Scanner input = new Scanner(System.in);
         
         System.out.print("Row: ");
+        try{
         shoot[0] = input.nextInt();
+        }catch(InputMismatchException e){
+    		System.out.println("Feeling naughty? Well, stick to integer values please.");
+    	}
         shoot[0]--;
         
+        
         System.out.print("Column: ");
+        try{
         shoot[1] = input.nextInt();
+    }catch(InputMismatchException e){
+		System.out.println("Feeling naughty? Well, stick to integer values please.");
+	}
         shoot[1]--;
         
     }
@@ -123,9 +134,13 @@ public class SinkYoFriendsMain {
     }
 
     public static void changeboard(int[] shoot, int[][] ships, int[][] board){
+    	try{
         if(hit(shoot,ships))
             board[shoot[0]][shoot[1]]=1;
         else
             board[shoot[0]][shoot[1]]=0;
+    	}catch(Exception e){
+    		System.out.println("INVALID SPOT!!!! There is no such column or row, so try again, you knucklehead!");
+    	}
     }
 }
