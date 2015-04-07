@@ -12,8 +12,25 @@ public class AI {
 	public int[] shoot() {
 		if (noHits()) {
 			shootRandom();
+		} else if (unfinishedBoat()) {
+			//TODO
 		}
 		return shot;
+	}
+
+	private boolean unfinishedBoat() {
+		int i = 0;
+		for (int x = 0; x < user.getGridData().length; x++) {
+			for (int y = 0; y < user.getGridData().length; y++) {
+				if (user.getGridData()[x][y] > 2 && user.getGridData()[x][y] < 5) {
+					i++;
+				}
+			}
+		}
+		if (i > 0) {
+			return true;
+		}
+		return false;
 	}
 
 	private void shootRandom() {
