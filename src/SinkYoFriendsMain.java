@@ -1,14 +1,7 @@
-<<<<<<< HEAD
+
 import java.util.InputMismatchException; 
 import java.util.Random;
 import java.util.Scanner;
-
-import com.google.code.chatterbotapi.*;
-public class SinkYoFriendsMain {
-String y; 
-    public static void main(String[] args) throws Exception {
-    	  ChatterBotFactory factory = new ChatterBotFactory();
-=======
 import java.io.File;
 import java.util.InputMismatchException;
 import java.util.Random;
@@ -16,12 +9,16 @@ import java.util.Scanner;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import com.google.code.chatterbotapi.*;
+
+
+
 
 public class SinkYoFriendsMain {
 	
 	
->>>>>>> aaa0c4ce4394ab1e7d95448a41b76f2c5ef2fc0c
-
+	public static void main(String[] args) throws Exception {
+  	  ChatterBotFactory factory = new ChatterBotFactory();
           ChatterBot bot1 = factory.create(ChatterBotType.CLEVERBOT);
           ChatterBotSession bot1session = bot1.createSession();
         int[][] board = new int[5][5];
@@ -35,7 +32,9 @@ public class SinkYoFriendsMain {
         initShips(ships);
         System.out.println("Come and Sink Yo' Friends!!! You are going first.");
         System.out.println("Pick a row and a column between 1 and 5 to target a");
-        System.out.println("ship.");
+        System.out.println("ship. For your added entertainment, Cleverbot will comment");
+        System.out.println("on the game as well.");
+        
         
         do{
             showBoard(board);
@@ -127,10 +126,9 @@ public class SinkYoFriendsMain {
         shoot[0] = input.nextInt();
         }catch(InputMismatchException e){
     		System.out.println("Feeling naughty? Stick to integer values please.");
-<<<<<<< HEAD
-=======
+
     		sound();
->>>>>>> aaa0c4ce4394ab1e7d95448a41b76f2c5ef2fc0c
+
     	}
         shoot[0]--;
         
@@ -140,10 +138,7 @@ public class SinkYoFriendsMain {
         shoot[1] = input.nextInt();
     }catch(InputMismatchException e){
 		System.out.println("Feeling naughty? Stick to integer values please.");
-<<<<<<< HEAD
-=======
 		sound();
->>>>>>> aaa0c4ce4394ab1e7d95448a41b76f2c5ef2fc0c
 	}
         shoot[1]--;
         
