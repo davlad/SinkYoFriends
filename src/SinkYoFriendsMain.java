@@ -1,16 +1,22 @@
-import java.util.InputMismatchException;
+import java.util.InputMismatchException; 
 import java.util.Random;
 import java.util.Scanner;
 
+import com.google.code.chatterbotapi.*;
 public class SinkYoFriendsMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+    	  ChatterBotFactory factory = new ChatterBotFactory();
+
+          ChatterBot bot1 = factory.create(ChatterBotType.CLEVERBOT);
+          ChatterBotSession bot1session = bot1.createSession();
         int[][] board = new int[5][5];
         int[][] ships = new int[3][2];
         int[] shoot = new int[2];
         int attempts=0,
             shotHit=0;
-        
+        String x = "YASSSSSSS! You have sunk yo' friends, matey! The game is finished!";
+        x = bot1session.think(x);
         initBoard(board);
         initShips(ships);
         System.out.println("Come and Sink Yo' Friends!!! You are going first.");
@@ -35,6 +41,7 @@ public class SinkYoFriendsMain {
         }while(shotHit!=3);
         
         System.out.println("\n\n\nYASSSSSSS! You have sunk yo' friends, matey! The game is finished! You hit 3 ships in "+attempts+" attempts");
+        System.out.println(x + "-said by Cleverbot");
         showBoard(board);
     	
     }
@@ -92,7 +99,7 @@ public class SinkYoFriendsMain {
         try{
         shoot[0] = input.nextInt();
         }catch(InputMismatchException e){
-    		System.out.println("Feeling naughty? Well, stick to integer values please.");
+    		System.out.println("Feeling naughty? Stick to integer values please.");
     	}
         shoot[0]--;
         
@@ -101,7 +108,7 @@ public class SinkYoFriendsMain {
         try{
         shoot[1] = input.nextInt();
     }catch(InputMismatchException e){
-		System.out.println("Feeling naughty? Well, stick to integer values please.");
+		System.out.println("Feeling naughty? Stick to integer values please.");
 	}
         shoot[1]--;
         
@@ -141,6 +148,7 @@ public class SinkYoFriendsMain {
             board[shoot[0]][shoot[1]]=0;
     	}catch(Exception e){
     		System.out.println("INVALID SPOT!!!! There is no such column or row, so try again, you knucklehead!");
+    		
     	}
     }
 }
