@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.InputMismatchException; 
 import java.util.Random;
 import java.util.Scanner;
@@ -7,6 +8,19 @@ public class SinkYoFriendsMain {
 String y; 
     public static void main(String[] args) throws Exception {
     	  ChatterBotFactory factory = new ChatterBotFactory();
+=======
+import java.io.File;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+public class SinkYoFriendsMain {
+	
+	
+>>>>>>> aaa0c4ce4394ab1e7d95448a41b76f2c5ef2fc0c
 
           ChatterBot bot1 = factory.create(ChatterBotType.CLEVERBOT);
           ChatterBotSession bot1session = bot1.createSession();
@@ -44,6 +58,19 @@ String y;
         System.out.println( x + " -said by Cleverbot");
         showBoard(board);
     	
+    }
+    
+    public static void sound() {
+    	try
+        {
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(new File("no.wav")));
+            clip.start();
+        }
+        catch (Exception exc)
+        {
+            exc.printStackTrace(System.out);
+        }
     }
     
     public static void initBoard(int[][] board){
@@ -100,6 +127,10 @@ String y;
         shoot[0] = input.nextInt();
         }catch(InputMismatchException e){
     		System.out.println("Feeling naughty? Stick to integer values please.");
+<<<<<<< HEAD
+=======
+    		sound();
+>>>>>>> aaa0c4ce4394ab1e7d95448a41b76f2c5ef2fc0c
     	}
         shoot[0]--;
         
@@ -109,6 +140,10 @@ String y;
         shoot[1] = input.nextInt();
     }catch(InputMismatchException e){
 		System.out.println("Feeling naughty? Stick to integer values please.");
+<<<<<<< HEAD
+=======
+		sound();
+>>>>>>> aaa0c4ce4394ab1e7d95448a41b76f2c5ef2fc0c
 	}
         shoot[1]--;
         
