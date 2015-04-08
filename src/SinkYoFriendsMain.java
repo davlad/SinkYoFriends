@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.google.code.chatterbotapi.*;
 public class SinkYoFriendsMain {
-
+String y; 
     public static void main(String[] args) throws Exception {
     	  ChatterBotFactory factory = new ChatterBotFactory();
 
@@ -41,7 +41,7 @@ public class SinkYoFriendsMain {
         }while(shotHit!=3);
         
         System.out.println("\n\n\nYASSSSSSS! You have sunk yo' friends, matey! The game is finished! You hit 3 ships in "+attempts+" attempts");
-        System.out.println(x + "-said by Cleverbot");
+        System.out.println( x + " -said by Cleverbot");
         showBoard(board);
     	
     }
@@ -114,11 +114,15 @@ public class SinkYoFriendsMain {
         
     }
     
-    public static boolean hit(int[] shoot, int[][] ships){
-        
+    public static boolean hit(int[] shoot, int[][] ships) throws Exception{
+    	ChatterBotFactory factory = new ChatterBotFactory();
+
+        ChatterBot bot1 = factory.create(ChatterBotType.CLEVERBOT);
+        ChatterBotSession bot1session = bot1.createSession();
         for(int ship=0 ; ship<ships.length ; ship++){
             if( shoot[0]==ships[ship][0] && shoot[1]==ships[ship][1]){
                 System.out.printf("You hit a ship located in (%d,%d)\n",shoot[0]+1,shoot[1]+1);
+                System.out.println(bot1session.think("Good Job! Nice Hit!") + "-said by Cleverbot");
                 return true;
             }
         }
@@ -140,7 +144,11 @@ public class SinkYoFriendsMain {
                                  "Column %d -> %d ships\n",attempt,shoot[0]+1,row,shoot[1]+1,column);
     }
 
-    public static void changeboard(int[] shoot, int[][] ships, int[][] board){
+    public static void changeboard(int[] shoot, int[][] ships, int[][] board) throws Exception{
+    	ChatterBotFactory factory = new ChatterBotFactory();
+
+        ChatterBot bot1 = factory.create(ChatterBotType.CLEVERBOT);
+        ChatterBotSession bot1session = bot1.createSession();
     	try{
         if(hit(shoot,ships))
             board[shoot[0]][shoot[1]]=1;
@@ -148,7 +156,7 @@ public class SinkYoFriendsMain {
             board[shoot[0]][shoot[1]]=0;
     	}catch(Exception e){
     		System.out.println("INVALID SPOT!!!! There is no such column or row, so try again, you knucklehead!");
-    		
+    		System.out.println(bot1session.think("INVALID SPOT!!!! There is no such column or row, so try again, you knucklehead!") + "-said by Cleverbot");
     	}
     }
 }
