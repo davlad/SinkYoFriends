@@ -1,8 +1,14 @@
+import java.io.File;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 public class SinkYoFriendsMain {
+	
+	
 
     public static void main(String[] args) {
         int[][] board = new int[5][5];
@@ -37,6 +43,19 @@ public class SinkYoFriendsMain {
         System.out.println("\n\n\nYASSSSSSS! You have sunk yo' friends, matey! The game is finished! You hit 3 ships in "+attempts+" attempts");
         showBoard(board);
     	
+    }
+    
+    public static void sound() {
+    	try
+        {
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(new File("no.wav")));
+            clip.start();
+        }
+        catch (Exception exc)
+        {
+            exc.printStackTrace(System.out);
+        }
     }
     
     public static void initBoard(int[][] board){
@@ -93,6 +112,7 @@ public class SinkYoFriendsMain {
         shoot[0] = input.nextInt();
         }catch(InputMismatchException e){
     		System.out.println("Feeling naughty? Stick to integer values please.");
+    		sound();
     	}
         shoot[0]--;
         
@@ -102,6 +122,7 @@ public class SinkYoFriendsMain {
         shoot[1] = input.nextInt();
     }catch(InputMismatchException e){
 		System.out.println("Feeling naughty? Stick to integer values please.");
+		sound();
 	}
         shoot[1]--;
         
