@@ -1,14 +1,3 @@
 # SinkYoFriends
 
-Shot data:
-  0 - nothing (also returned if error)
-  1 - boat
-  2 - miss
-  3 - hit
-  4 - destroyed
-
-Boat data (direction):
-  1 - up
-  2 - right
-  3 - down
-  4 - left
+Welcome to the game! Click on jar.jar and view raw to download the jar. Make sure you run this in the terminal. If you type in a letter instead of a number for column and row, there will be a surprise!  Also, we are using Cleverbot to send sassy remarks if you fail. So, make sure you are connected to the internet when running the jar! Happy playing!
